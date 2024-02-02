@@ -8,7 +8,7 @@ import {
   LogoutOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu } from "antd";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Imgs from "./Image/Imgs";
 import Text from "./Image/Text";
 
@@ -38,15 +38,17 @@ const items = [
   ]),
   getItem("Tin tức", "10", <FileOutlined />),
   getItem("Giới thiệu", "11"),
-  getItem("Product", "12"),
-  getItem("Profile", "13", <ProfileOutlined />),
-  getItem("Logout", "14", <LogoutOutlined />),
+  getItem("Logout", "12", <LogoutOutlined />),
 ];
 
 const Home = () => {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
 
   const handleLogout = () => {
+
+    // return <Navigate to={'/login'} replace/>
+
+    
     localStorage.clear();
     navigate("/login");
   };
@@ -83,17 +85,10 @@ const Home = () => {
         break;
 
       case "11":
+       
         break;
 
       case "12":
-        navigate("/product");
-        break;
-
-      case "13":
-        navigate("/profile");
-
-        break;
-      case "14":
         // Thực hiện các bước đăng xuất nếu cần
         handleLogout();
 

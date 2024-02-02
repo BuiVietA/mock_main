@@ -6,38 +6,41 @@ import Profile from "../page/Menu/Profile";
 import NotFound from "../page/Menu/NotFound";
 import PrivateRoute from "../Commponents/PrivateRoute";
 import Login from "../page/Login";
+import Layout from "../page/Menu/Layout";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <PrivateRoute>
-        <Login />
+        <Layout/>
       </PrivateRoute>
     ),
     errorElement: <NotFound />,
-    // children: [
-    //   { path: "/home", index: true, element: <Home /> },
-    //   {
-    //     path: "product",
-    //     element: <Product />,
-    //   },
-    //   {
-    //     path: "/profile",
-    //     element: <Profile />,
-    //   },
-    // ],
+    children: [
+      { 
+      index: true, path:"/home",
+
+      element: <Home /> },
+      {
+        path: "/product",
+        element: <Product />,
+      },
+      {
+path:"/product/{id}",
+element:<Product/>
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+    ],
   },
-  {
-    path: "/home",
-    index: true,
-    element: <Home />,
-  },
+ 
   {
     path: "/login",
     element: <Login />,
   },
-  { path: "/product", element: <Product /> },
 
   {
     path: "/register",
